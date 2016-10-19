@@ -1,0 +1,24 @@
+{
+  "name": "az-iot-gateway-gatting-started",
+  "version": "1.0.0",
+  "description": "Getting started for Azure IoT Gateway",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuwzho/az-iot-gateway-getting-started.git"
+  },
+  "keywords": [
+    "azure",
+    "iot",
+    "gateway"
+  ],
+  "author": "yuwzho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuwzho/az-iot-gateway-getting-started/issues"
+  },
+  "homepage": "https://github.com/yuwzho/az-iot-gateway-getting-started#readme"
+}
