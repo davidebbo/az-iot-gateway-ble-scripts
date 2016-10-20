@@ -22,9 +22,12 @@
   },
   "homepage": "https://github.com/yuwzho/az-iot-gateway-getting-started#readme",
   "devDependencies": {
+    "azure-event-hubs": "0.0.4",
+    "azure-storage": "^1.3.1",
     "get-gulp-args": "0.0.1",
     "gulp": "^3.9.1",
     "gulp-common": "Azure/gulp-common.git#v0.9.19",
+    "moment": "^2.15.1",
     "run-sequence": "^1.2.2"
   }
 }
