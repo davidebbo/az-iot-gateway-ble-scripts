@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/yuwzho/az-iot-gateway-getting-started/issues"
   },
-  "homepage": "https://github.com/yuwzho/az-iot-gateway-getting-started#readme"
+  "homepage": "https://github.com/yuwzho/az-iot-gateway-getting-started#readme",
+  "devDependencies": {
+    "get-gulp-args": "0.0.1",
+    "gulp": "^3.9.1",
+    "gulp-common": "Azure/gulp-common.git#v0.9.19",
+    "run-sequence": "^1.2.2"
+  }
 }

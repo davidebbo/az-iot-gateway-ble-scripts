@@ -1,0 +1,4 @@
+{
+    "bleConfig" : "gateway-ble",
+    "azFuncConfig" : "gateway-azure-function"
+}
