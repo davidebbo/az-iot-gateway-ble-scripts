@@ -1,8 +1,9 @@
 /*
-* IoT Hub Raspberry Pi NodeJS - Microsoft Sample Code - Copyright (c) 2016 - Licensed MIT
-*/
+ * IoT Hub Raspberry Pi NodeJS - Microsoft Sample Code - Copyright (c) 2016 - Licensed MIT
+ */
 'use strict';
 
+var moment = require('moment');
 var EventHubClient = require('azure-event-hubs').Client;
 var iotHubClient;
 
@@ -10,13 +11,13 @@ var iotHubClient;
  * Read device-to-cloud messages from IoT Hub.
  * @param {object}  config - config object
  */
-var readIoTHub = function (config) {
+var readIoTHub = function(config) {
   // Listen device-to-cloud messages
-  var printError = function (err) {
+  var printError = function(err) {
     console.log(err.message);
   };
-  var printMessage = function (message) {
-    console.log('[IoT Hub] Received message: ' + message.body.toString('utf-8') + '\n');
+  var printMessage = function(message) {
+    console.log('[' + moment().format('YYYY:MM:DD[T]h:mm:ss') + '][IoT Hub] Received message: ' + message.body.toString() + '\n');
   };
 
   // Only receive messages sent to IoT Hub after this time.
@@ -25,10 +26,12 @@ var readIoTHub = function (config) {
   iotHubClient = EventHubClient.fromConnectionString(config.iot_hub_connection_string);
   iotHubClient.open()
     .then(iotHubClient.getPartitionIds.bind(iotHubClient))
-    .then(function (partitionIds) {
-      return partitionIds.map(function (partitionId) {
-        return iotHubClient.createReceiver(config.iot_hub_consumer_group_name, partitionId, { 'startAfterTime': startTime })
-          .then(function (receiver) {
+    .then(function(partitionIds) {
+      return partitionIds.map(function(partitionId) {
+        return iotHubClient.createReceiver(config.iot_hub_consumer_group_name, partitionId, {
+            'startAfterTime': startTime
+          })
+          .then(function(receiver) {
             receiver.on('errorReceived', printError);
             receiver.on('message', printMessage);
           });
@@ -40,7 +43,7 @@ var readIoTHub = function (config) {
 /**
  * Close connection to IoT Hub.
  */
-var cleanup = function () {
+var cleanup = function() {
   iotHubClient.close();
 }
 

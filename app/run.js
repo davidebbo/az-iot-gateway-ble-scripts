@@ -1,17 +1,18 @@
-var execSync = require('child_process').execSync;
-var spawn = require('child_process').spawn;
 var fs = require('fs');
-var util = require('./lib/util.js');
+var spawn = require('child_process').spawn;
 var bleConfig = require('./lib/bleconfig.js');
+var util = require('./lib/util.js');
 
 function run(configPath) {
 	// change to directory
 	process.chdir(bleConfig.samplePath);
 	// set crt
 	// export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
-	execSync('export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt');
+	process.env['SSL_CERT_FILE'] = '/etc/ssl/certs/ca-certificates.crt';
 	// run sample
-	var ps = spawn('./' + bleConfig.sampleBinary, [configPath], { stdio: 'inherit' });
+	var ps = spawn('./' + bleConfig.sampleBinary, [configPath], {
+		stdio: 'inherit'
+	});
 	// re-direct the Ctrl-C to this process
 	process.on('SIGINT', ps.kill);
 }
